@@ -82,7 +82,7 @@
 \begin_body
 
 \begin_layout Title
-Brief Review of the EMPA DC
+Summary of the EMPA DC and RL-Based Control
 \end_layout
 
 \begin_layout Author
@@ -966,7 +966,7 @@ noprefix "false"
 placement h
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -1170,6 +1170,213 @@ U_{\text{total}}=\sum_{i=1}^{N}u_{i}
 
 Utilization is adjusted by a scheduler, depending on the workload and the
  performance of the cooling system.
+\end_layout
+
+\begin_layout Section
+Reinforcement Learning for Control of Cooling System
+\end_layout
+
+\begin_layout Standard
+Reinforcement Learning (RL) is being considered for control of the cooling
+ system for both optimal performance of the servers and optimal energy usage.
+ The following components are the basic elements of a RL-based control system:
+\end_layout
+
+\begin_layout Itemize
+Environment: Environment is the system that is controlled.
+\end_layout
+
+\begin_layout Itemize
+States: States define the environment, which is represented by the measured
+ parameters.
+ These parameters cannot be adjusted directly (e.g.
+ CPU temperature).
+\end_layout
+
+\begin_layout Itemize
+Actions: Actions are controllable parameters.
+\end_layout
+
+\begin_layout Itemize
+Reward/Penalty: Reward/Penalty function is a type of index that feedback
+ positive reward when the control action results recommended temperatures
+ and vice versa.
+\end_layout
+
+\begin_layout Standard
+In the EMPA DC, the components of the RL control system is proposed as shown
+ in Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:RLparams"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+\begin_inset Float table
+placement h
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:RLparams"
+
+\end_inset
+
+Proposed components of the RL control of the EMPA DC
+\end_layout
+
+\end_inset
+
+
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+RL Component
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Parameters
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Environment
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Server Racks
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+States
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $T_{\text{in}}^{i}$
+\end_inset
+
+ , 
+\begin_inset Formula $T_{\text{out}}^{i}$
+\end_inset
+
+ , 
+\begin_inset Formula $T_{\text{CPU}}^{i}$
+\end_inset
+
+ , 
+\begin_inset Formula $P_{\text{s}}^{i}$
+\end_inset
+
+ , 
+\begin_inset Formula $u_{i}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Actions
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $T_{\text{sup}}$
+\end_inset
+
+ , 
+\begin_inset Formula $v_{\text{f}}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ Reward/Penalty function is proposed to be:
+\begin_inset Formula 
+\[
+R=\alpha(EER)+\beta(PM)-\left(\gamma(OP)+P\right)
+\]
+
+\end_inset
+
+where EER is the energy efficiency ratio, PM is the performance metric,
+ OP is the overhead penalty, and P is a general penalty term based on the
+ successful realization of the recommended temperatures.
+\end_layout
+
+\begin_layout Standard
+In the current scenario of the RL-based control, workload distribution is
+ not considered to be an action.
+ It will be included as an action parameter in the following stages of the
+ study.
 \end_layout
 
 \end_body
