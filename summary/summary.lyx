@@ -619,7 +619,7 @@ Rack Cooling Index, RCI
 
 \begin_layout Standard
 Rack Cooling Index (RCI) measures how well the cooling temperature follows
- the recommandations.
+ the recommendations.
  RCI is defined for both under-cooling and over-cooling.
 \end_layout
 
@@ -642,8 +642,8 @@ According to this definition,
 \begin_inset Formula $RCI_{\text{HI}}$
 \end_inset
 
- values lower than 100% shows that over-temperature occured at some of the
- racks.
+ values lower than 100% shows that over-temperature occurred at some of
+ the racks.
  Equation 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -655,10 +655,10 @@ noprefix "false"
 \end_inset
 
  can be written for 
-\begin_inset Formula $N$
+\begin_inset Formula $N-$
 \end_inset
 
--racks as follows:
+racks as follows:
 \begin_inset Formula 
 \begin{equation}
 RCI_{\text{HI}}=\left(1-\dfrac{\sum_{i=1}^{N}\left(T_{\text{in}}^{i}-T_{\text{max-rec}}\right)_{T_{\text{in}}^{i}>T_{\text{max-rec}}}}{\left(T_{\text{max-all}}-T_{\text{max-rec}}\right)\times N}\right)\times100,\qquad\text{unit:\% }
@@ -682,14 +682,14 @@ According to this definition,
 \begin_inset Formula $RCI_{\text{HI}}$
 \end_inset
 
- is a measure pof the absence of over-temperatures.
+ is a measure of the absence of over-temperatures.
  100% means no over-temperature exists.
  
 \begin_inset Formula $RCI_{\text{HI}}$
 \end_inset
 
- values lower than 100% shows that over-temperature occured at some of the
- racks.
+ values lower than 100% shows that over-temperature occurred at some of
+ the racks.
  Equation 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -701,10 +701,10 @@ noprefix "false"
 \end_inset
 
  can be written for 
-\begin_inset Formula $N$
+\begin_inset Formula $N-$
 \end_inset
 
--racks as follows:
+racks as follows:
 \begin_inset Formula 
 \begin{equation}
 RCI_{\text{LO}}=\left(1-\dfrac{\sum_{i=1}^{N}\left(T_{\text{min-rec}}-T_{\text{in}}^{i}\right)_{T_{\text{in}}^{i}<T_{\text{min-rec}}}}{\left(T_{\text{min-rec}}-T_{\text{min-all}}\right)\times N}\right)\times100,\qquad\text{unit:\% }
@@ -939,10 +939,10 @@ RTI=\dfrac{T_{\text{ret}}-T_{\text{sup}}}{T_{\text{out}}^{i}-T_{\textipa{in}}^{i
 \end_inset
 
 For 
-\begin_inset Formula $N$
+\begin_inset Formula $N-$
 \end_inset
 
--racks, an average RTI can be expressed as follows:
+racks, an average RTI can be expressed as follows:
 \begin_inset Formula 
 \begin{equation}
 RTI=\dfrac{\left(T_{\text{ret}}-T_{\text{sup}}\right)\times N}{\sum_{i=1}^{N}\left(T_{\text{out}}^{i}-T_{\textipa{in}}^{i}\right)}\times100,\qquad\text{unit:\% }
@@ -1151,7 +1151,7 @@ Utilization is the percentage utilization of the CPU computational capacity.
 \begin_inset Formula $i^{\text{th}}$
 \end_inset
 
--server utilization is defined as 
+ server utilization is defined as 
 \begin_inset Formula $u_{i}$
 \end_inset
 
