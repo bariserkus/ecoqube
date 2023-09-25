@@ -43,9 +43,11 @@
 \use_package stackrel 1
 \use_package stmaryrd 1
 \use_package undertilde 1
-\cite_engine basic
-\cite_engine_type default
+\cite_engine biblatex
+\cite_engine_type authoryear
 \biblio_style plain
+\biblatex_bibstyle authoryear
+\biblatex_citestyle authoryear
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
@@ -618,8 +620,15 @@ Rack Cooling Index, RCI
 \end_layout
 
 \begin_layout Standard
-Rack Cooling Index (RCI) measures how well the cooling temperature follows
- the recommendations.
+Rack Cooling Index (RCI) is proposed by 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Herrlin2005"
+literal "false"
+
+\end_inset
+
+ and measures how well the cooling temperature follows the recommendations.
  RCI is defined for both under-cooling and over-cooling.
 \end_layout
 
@@ -885,8 +894,16 @@ Return Temperature Index (RTI)
 \end_layout
 
 \begin_layout Standard
-Return Temperature Index (RTI) is a measure of how effectively the air supplied
- to the rack is take flow through the server and returned back to the cooler.
+Return Temperature Index (RTI) is proposed by 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Herrlin2008"
+literal "false"
+
+\end_inset
+
+ and is a measure of how effectively the air supplied to the rack is take
+ flow through the server and returned back to the cooler.
  Two important definitions are important to understand the RTI: by-pass
  air and re-circulation air.
 \end_layout
@@ -1377,6 +1394,18 @@ In the current scenario of the RL-based control, workload distribution is
  not considered to be an action.
  It will be included as an action parameter in the following stages of the
  study.
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+btprint "btPrintCited"
+bibfiles "/home/baris/bib-dict/dccooling"
+options "plain"
+
+\end_inset
+
+
 \end_layout
 
 \end_body
