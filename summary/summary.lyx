@@ -1,0 +1,1176 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize a4paper
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 2.5cm
+\topmargin 2.5cm
+\rightmargin 2.5cm
+\bottommargin 2.5cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Brief Review of the EMPA DC
+\end_layout
+
+\begin_layout Author
+Baris Erkus and A.
+ Serdar Atalay
+\end_layout
+
+\begin_layout Section
+Layout of the DC
+\end_layout
+
+\begin_layout Standard
+The schematic layout of the EMPA DC is shown in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:layout"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+ The fans directly provide cool air to the servers numbered as 
+\begin_inset Formula $0$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Section
+Measurements and Control Switches
+\end_layout
+
+\begin_layout Standard
+Various parameters from the DC can be measured and some the parameters can
+ be adjusted based on a control algorithm.
+ These are shown in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:measurements"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ and summarized below: 
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename figures/fig02.pdf
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:layout"
+
+\end_inset
+
+Schematic layout of the EMPA DC
+\end_layout
+
+\end_inset
+
+
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\begin_inset Graphics
+	filename figures/fig01.pdf
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:measurements"
+
+\end_inset
+
+Measurements and control switches of the EMPA DC
+\end_layout
+
+\end_inset
+
+
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\begin_inset Graphics
+	filename figures/fig03.pdf
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:recommended"
+
+\end_inset
+
+ Cooler supply temperature distribution along the racks
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $T_{\text{sup}}$
+\end_inset
+
+ : Temperature of the air supplied by the cooler to the server rack or simple
+ rack intake temperature.
+ In the EMPA DC, supply air is directly fed into the servers and the temperature
+ can be adjusted.
+ In a typical DC scenario, where cool air is supplied to a cold aisle and
+ collected from a hot aisle, 
+\begin_inset Formula $T_{\text{sup}}$
+\end_inset
+
+ may differ for each server in a row of servers.
+ In EMPA DC, it can be assumed that the temperature of the cold air supplied
+ by the cooler is equal to the rack intake temperature.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $v_{\text{f}}$
+\end_inset
+
+ : Velocity of the cooler fan.
+ Fan is used to vary the supply air flow rate.
+ In EMPA DC, fan velocity can be adjusted.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $T_{\text{ret}}^{i}$
+\end_inset
+
+ : Temperature of the air measured at the location of air returning to the
+ cooler.
+ In EMPA DC, 
+\begin_inset Formula $T_{\text{ret}}^{i}$
+\end_inset
+
+ is assumed to be equal to the temperature of the hot air leaving the servers.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $T_{\text{in}}^{i}$
+\end_inset
+
+ : Inlet temperature of the 
+\begin_inset Formula $i^{\text{th}}$
+\end_inset
+
+ server.
+ This temperature is measured at the air inlet location of the server.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $T_{\text{out}}^{i}$
+\end_inset
+
+ : Outlet temperature of the 
+\begin_inset Formula $i^{\text{th}}$
+\end_inset
+
+ server.
+ This temperature is measured at the air outlet location of the server.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $T_{\text{CPU}}^{i}$
+\end_inset
+
+ : The temperature of the CPU of the 
+\begin_inset Formula $i^{\text{th}}$
+\end_inset
+
+ server.
+ This temperature is measured and reported by the server.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $P_{\text{s}}^{i}$
+\end_inset
+
+ : Power consumption of the 
+\begin_inset Formula $i^{\text{th}}$
+\end_inset
+
+ server.
+ This value is measured and reported by the server.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $u_{i}$
+\end_inset
+
+ : Utilization of the 
+\begin_inset Formula $i^{\text{th}}$
+\end_inset
+
+ server.
+ Utilization directly dictates the the power consumption of the server.
+ In EMPA DC, if utilization is smaller than 50%, power consumption follow
+ a rule and it follows a different rule if it is larger than 50%.
+\end_layout
+
+\begin_layout Section
+Performance Evaluation
+\end_layout
+
+\begin_layout Standard
+Performance of the EMPA DC is evaluated on several basis.
+ These are summarized in this section.
+\end_layout
+
+\begin_layout Subsection
+CPU Temperature
+\end_layout
+
+\begin_layout Standard
+The maximum temperature of the CPU should be 
+\begin_inset Formula $73^{\circ}\text{C}$
+\end_inset
+
+.
+ CPU temperatures higher than this value may result reduced performance
+ of the CPU and poss a certain level of risk of failure.
+ CPU temperatures below this level may not be optimal for energy efficiency
+ without contribution any advantage to the CPU performance.
+\end_layout
+
+\begin_layout Subsection
+Cooler Supply Temperature
+\end_layout
+
+\begin_layout Standard
+ASHRAE recommends that cooler supply temperature should be within a certain
+ range for the cooling system to provide adequate cooling environment for
+ the servers.
+ It is considered that prolonged exposure to supply temperatures may result
+ failures or unnecessary use of energy.
+ For this purpose two sets of ranges for the cooling system supply temperature
+ are defined:
+\end_layout
+
+\begin_layout Itemize
+Recommended maximum and minimum temperatures
+\end_layout
+
+\begin_layout Itemize
+Maximum and minimum allowable temperatures.
+\end_layout
+
+\begin_layout Standard
+These are summarized in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:recommended"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+ It is recommended that the cooler supply temperature stay in the recommended
+ range.
+ It is, however, normal that the temperature may exceed the maximum recommended
+ temperature or fell below the minimum recommended temperature.
+ In these cases, temperature should stay in the allowable range.
+ Under-cooling may result in the failure of the servers, and over-cooling
+ may result inefficient use of energy.
+ Recommendations of the suggestions of the ASHRAE is given in Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:ashraerec"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+ 
+\begin_inset Float table
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:ashraerec"
+
+\end_inset
+
+ASHRAE recommendations of the supply temperatures
+\end_layout
+
+\end_inset
+
+
+\begin_inset Tabular
+<lyxtabular version="3" rows="5" columns="3">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Temperature
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Notation
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Recommendation
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Maximum Allowable Temperature
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $T_{\text{max-all}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\ensuremath{32^{\circ}\text{C}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Maximum Recommended Temperature
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $T_{\text{max-rec}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\ensuremath{27^{\circ}\text{C}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Minimum Recommended Temperature
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $T_{\text{min-rec}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\ensuremath{18^{\circ}\text{C}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Minimum Allowable Temperature
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $T_{\text{min-all}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\ensuremath{15^{\circ}\text{C}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Two indices are frequently used to evaluate the performance of the cooling
+ system: Rack Cooling Index (RCI) and Return Temperature Index (RTI).
+ These are discussed next.
+\end_layout
+
+\begin_layout Subsubsection*
+Rack Cooling Index, RCI
+\end_layout
+
+\begin_layout Standard
+Rack Cooling Index (RCI) measures how well the cooling temperature follows
+ the recommandations.
+ RCI is defined for both under-cooling and over-cooling.
+\end_layout
+
+\begin_layout Standard
+Rack cooling index is defined for under-cooling as: 
+\begin_inset Formula 
+\begin{equation}
+RCI_{\text{HI}}=\left(1-\dfrac{\text{Total Over-Temp.}}{\text{Max. Allowable Over-Temp}}\right)\times100,\qquad\text{unit:\% }\label{eq:RCIhi}
+\end{equation}
+
+\end_inset
+
+According to this definition, 
+\begin_inset Formula $RCI_{\text{HI}}$
+\end_inset
+
+ is a measure pof the absence of over-temperatures.
+ 100% means no over-temperature exists.
+ 
+\begin_inset Formula $RCI_{\text{HI}}$
+\end_inset
+
+ values lower than 100% shows that over-temperature occured at some of the
+ racks.
+ Equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:RCIhi"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ can be written for 
+\begin_inset Formula $N$
+\end_inset
+
+-racks as follows:
+\begin_inset Formula 
+\begin{equation}
+RCI_{\text{HI}}=\left(1-\dfrac{\sum_{i=1}^{N}\left(T_{\text{in}}^{i}-T_{\text{max-rec}}\right)_{T_{\text{in}}^{i}>T_{\text{max-rec}}}}{\left(T_{\text{max-all}}-T_{\text{max-rec}}\right)\times N}\right)\times100,\qquad\text{unit:\% }
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Rack cooling index is defined for over-cooling as: 
+\begin_inset Formula 
+\begin{equation}
+RCI_{\text{LO}}=\left(1-\dfrac{\text{Total Under-Temp.}}{\text{Max. Allowable Under-Temp}}\right)\times100,\qquad\text{unit:\% }\label{eq:RCIlo}
+\end{equation}
+
+\end_inset
+
+According to this definition, 
+\begin_inset Formula $RCI_{\text{HI}}$
+\end_inset
+
+ is a measure pof the absence of over-temperatures.
+ 100% means no over-temperature exists.
+ 
+\begin_inset Formula $RCI_{\text{HI}}$
+\end_inset
+
+ values lower than 100% shows that over-temperature occured at some of the
+ racks.
+ Equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:RCIlo"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ can be written for 
+\begin_inset Formula $N$
+\end_inset
+
+-racks as follows:
+\begin_inset Formula 
+\begin{equation}
+RCI_{\text{LO}}=\left(1-\dfrac{\sum_{i=1}^{N}\left(T_{\text{min-rec}}-T_{\text{in}}^{i}\right)_{T_{\text{in}}^{i}<T_{\text{min-rec}}}}{\left(T_{\text{min-rec}}-T_{\text{min-all}}\right)\times N}\right)\times100,\qquad\text{unit:\% }
+\end{equation}
+
+\end_inset
+
+Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:RCIrating"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ shows the rating for both of the RCI indices.
+ 
+\begin_inset Float table
+placement h
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:RCIrating"
+
+\end_inset
+
+Rating of RCI indices
+\end_layout
+
+\end_inset
+
+
+\begin_inset Tabular
+<lyxtabular version="3" rows="5" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+RCI
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Rating
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+RCI = 100%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Ideal
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+RCI 
+\begin_inset Formula $\geq$
+\end_inset
+
+ 96%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Good
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+91% 
+\begin_inset Formula $\leq$
+\end_inset
+
+ RCI 
+\begin_inset Formula $\leq$
+\end_inset
+
+ 95%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Acceptable
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+RCI 
+\begin_inset Formula $\leq$
+\end_inset
+
+ 90%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Poor
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Return Temperature Index (RTI)
+\end_layout
+
+\begin_layout Standard
+Return Temperature Index (RTI) is a measure of how effectively the air supplied
+ to the rack is take flow through the server and returned back to the cooler.
+ Two important definitions are important to understand the RTI: by-pass
+ air and re-circulation air.
+\end_layout
+
+\begin_layout Standard
+By-pass air is defined as the supplied air that does not participate in
+ the cooling of the servers.
+ In this case, the cool air finds its way to the hot aisle without passing
+ through the interior of the server rack due to probably the poor construction
+ quality or high levels of supply airflow.
+\end_layout
+
+\begin_layout Standard
+Re-circulation air is defined as the air that directly goes back to the
+ cold aisle, possibly several times, instead returning to the cooler.
+ This increases the temperature of the supply air.
+ Re-circulation may be caused by low levels of supply airflow or poor constructi
+on quality.
+\end_layout
+
+\begin_layout Standard
+RTI is the ratio of the air actually taken by the server and is used for
+ the cooling of the servers to the air supplied by the coolers:
+\begin_inset Formula 
+\begin{equation}
+RTI=\dfrac{\dot{M}_{\text{equip}}}{\dot{M}_{\text{\text{sup}}}}\times100,\qquad\text{unit:\% }
+\end{equation}
+
+\end_inset
+
+where 
+\begin_inset Formula $\dot{M}_{\text{equip}}$
+\end_inset
+
+ is the mass air flow actually taken by the IT equipment, and 
+\begin_inset Formula $\dot{M}_{\text{sup}}$
+\end_inset
+
+ is the mass air flow supplied by the cooler.
+ RTI can be expressed for the 
+\begin_inset Formula $i^{\text{th}}$
+\end_inset
+
+ rack using the temperature measurements as follows:
+\begin_inset Formula 
+\begin{equation}
+RTI=\dfrac{T_{\text{ret}}-T_{\text{sup}}}{T_{\text{out}}^{i}-T_{\textipa{in}}^{i}}\times100,\qquad\text{unit:\% }
+\end{equation}
+
+\end_inset
+
+For 
+\begin_inset Formula $N$
+\end_inset
+
+-racks, an average RTI can be expressed as follows:
+\begin_inset Formula 
+\begin{equation}
+RTI=\dfrac{\left(T_{\text{ret}}-T_{\text{sup}}\right)\times N}{\sum_{i=1}^{N}\left(T_{\text{out}}^{i}-T_{\textipa{in}}^{i}\right)}\times100,\qquad\text{unit:\% }
+\end{equation}
+
+\end_inset
+
+Interpretation of the RTI is given in Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:RTIrating"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+ 
+\begin_inset Float table
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:RTIrating"
+
+\end_inset
+
+Interpretation of the RTI indices
+\end_layout
+
+\end_inset
+
+
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+RTI
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Interpretation
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+RTI = 100%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Target
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+RTI > 100%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Re-Circulation
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+RTI < 100%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+By-Pass
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Subsection
+Power Usage
+\end_layout
+
+\begin_layout Standard
+An index for evaluating the power usage performance of a DC is Coefficient
+ of Performance (COP), which is defined as:
+\begin_inset Formula 
+\[
+COP=\dfrac{P_{\text{IT}}}{P_{\text{cooling}}}
+\]
+
+\end_inset
+
+where, 
+\begin_inset Formula $P_{\text{IT}}$
+\end_inset
+
+ is the power consumed by the IT equipment (e.g.
+ servers), and 
+\begin_inset Formula $P_{\text{cooling}}$
+\end_inset
+
+ is the power consumed by the cooling system.
+ COP is a characteristics of the cooling system and the DC and is fixed
+ for given temperatures.
+ The total power usage of the DC is given by:
+\begin_inset Formula 
+\[
+P_{\text{total}}=P_{\text{IT}}+P_{\text{cooling}}
+\]
+
+\end_inset
+
+It is convenient to represent the total power consumption in terms of only
+ 
+\begin_inset Formula $P_{\text{IT}}$
+\end_inset
+
+ as follows:
+\begin_inset Formula 
+\[
+P_{\text{total}}=\left(1+\dfrac{1}{COP}\right)P_{\text{IT}}
+\]
+
+\end_inset
+
+Therefore, the problem of minimization of total power consumption can be
+ represented as:
+\begin_inset Formula 
+\[
+\min\left(P_{\text{total}}\right)=\min\left[\left(1+\dfrac{1}{COP}\right)P_{\text{IT}}\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Utilization
+\end_layout
+
+\begin_layout Standard
+Utilization is the percentage utilization of the CPU computational capacity.
+ For the 
+\begin_inset Formula $i^{\text{th}}$
+\end_inset
+
+-server utilization is defined as 
+\begin_inset Formula $u_{i}$
+\end_inset
+
+ and 
+\begin_inset Formula $0<u_{i}<1.0$
+\end_inset
+
+.
+ Total utilization is defined as:
+\begin_inset Formula 
+\[
+U_{\text{total}}=\sum_{i=1}^{N}u_{i}
+\]
+
+\end_inset
+
+Utilization is adjusted by a scheduler, depending on the workload and the
+ performance of the cooling system.
+\end_layout
+
+\end_body
+\end_document
