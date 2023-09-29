@@ -35,7 +35,7 @@ ax.plot(t1, s1, 'black')
 ax.plot(t2, s2, 'black')
 
 
-ax.set(xlabel='Utilization, $u_i$', ylabel='Power Consumption (W)')
+ax.set(xlabel='Utilization, $u$', ylabel='Power Consumption, $P_\mathrm{s}$ (W)')
 
 
 fig.savefig("../summary/figures/fig04.pdf")

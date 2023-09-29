@@ -308,6 +308,13 @@ name "fig:recommended"
 \end_layout
 
 \begin_layout Standard
+\begin_inset Formula $P_{\text{c}}$
+\end_inset
+
+: Power consumption of the cooling system.
+\end_layout
+
+\begin_layout Standard
 \begin_inset Formula $u_{i}$
 \end_inset
 
@@ -323,6 +330,33 @@ name "fig:recommended"
 
 \begin_layout Subsection
 Modelling of the Server Power Consumption
+\end_layout
+
+\begin_layout Standard
+Utilization is the percentage utilization of the CPU computational capacity.
+ For the 
+\begin_inset Formula $i^{\text{th}}$
+\end_inset
+
+ server utilization is defined as 
+\begin_inset Formula $u_{i}$
+\end_inset
+
+ and 
+\begin_inset Formula $0<u_{i}<1.0$
+\end_inset
+
+.
+ Total utilization is defined as:
+\begin_inset Formula 
+\[
+U_{\text{total}}=\sum_{i=1}^{N}u_{i}
+\]
+
+\end_inset
+
+Utilization is adjusted by a scheduler, depending on the workload and the
+ performance of the cooling system.
 \end_layout
 
 \begin_layout Standard
@@ -342,10 +376,6 @@ where
 
  is utilization of server 
 \begin_inset Formula $i$
-\end_inset
-
- and 
-\begin_inset Formula $0<u_{i}<1.0$
 \end_inset
 
 .
@@ -393,6 +423,77 @@ Modelling of the Return and Supply Temperatures
 A model to estimate the relation between supply and return temperatures
  for a given workload is developed by [REF].
  [UNDER PROGRESS]
+\end_layout
+
+\begin_layout Subsection
+Modelling of Power Consumptions
+\end_layout
+
+\begin_layout Standard
+An index for evaluating the power usage performance of a DC is Coefficient
+ of Performance (COP), which is defined as:
+\begin_inset Formula 
+\[
+COP=\dfrac{P_{\text{IT}}}{P_{\text{c}}}
+\]
+
+\end_inset
+
+where, 
+\begin_inset Formula $P_{\text{IT}}$
+\end_inset
+
+ is the power consumed by the IT equipment (e.g.
+ servers), and 
+\begin_inset Formula $P_{\text{c}}$
+\end_inset
+
+ is the power consumed by the cooling system.
+ 
+\begin_inset Formula $P_{\text{IT}}$
+\end_inset
+
+ can be represented as:
+\begin_inset Formula 
+\[
+P_{\text{IT}}=\sum_{i=1}^{N}P_{\text{s}}^{i}
+\]
+
+\end_inset
+
+COP is a characteristics of the cooling system and the DC and is fixed for
+ given temperatures.
+ The total power usage of the DC is given by:
+\begin_inset Formula 
+\[
+P_{\text{total}}=P_{\text{IT}}+P_{\text{c}}
+\]
+
+\end_inset
+
+It is convenient to represent the total power consumption in terms of only
+ 
+\begin_inset Formula $P_{\text{IT}}$
+\end_inset
+
+ as follows:
+\begin_inset Formula 
+\[
+P_{\text{total}}=\left(1+\dfrac{1}{COP}\right)P_{\text{IT}}
+\]
+
+\end_inset
+
+Therefore, the problem of minimization of total power consumption can be
+ represented as:
+\begin_inset Formula 
+\[
+\min\left(P_{\text{total}}\right)=\min\left[\left(1+\dfrac{1}{COP}\right)P_{\text{IT}}\right]
+\]
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -1178,96 +1279,6 @@ By-Pass
 \end_inset
 
  
-\end_layout
-
-\begin_layout Subsection
-Power Usage
-\end_layout
-
-\begin_layout Standard
-An index for evaluating the power usage performance of a DC is Coefficient
- of Performance (COP), which is defined as:
-\begin_inset Formula 
-\[
-COP=\dfrac{P_{\text{IT}}}{P_{\text{cooling}}}
-\]
-
-\end_inset
-
-where, 
-\begin_inset Formula $P_{\text{IT}}$
-\end_inset
-
- is the power consumed by the IT equipment (e.g.
- servers), and 
-\begin_inset Formula $P_{\text{cooling}}$
-\end_inset
-
- is the power consumed by the cooling system.
- COP is a characteristics of the cooling system and the DC and is fixed
- for given temperatures.
- The total power usage of the DC is given by:
-\begin_inset Formula 
-\[
-P_{\text{total}}=P_{\text{IT}}+P_{\text{cooling}}
-\]
-
-\end_inset
-
-It is convenient to represent the total power consumption in terms of only
- 
-\begin_inset Formula $P_{\text{IT}}$
-\end_inset
-
- as follows:
-\begin_inset Formula 
-\[
-P_{\text{total}}=\left(1+\dfrac{1}{COP}\right)P_{\text{IT}}
-\]
-
-\end_inset
-
-Therefore, the problem of minimization of total power consumption can be
- represented as:
-\begin_inset Formula 
-\[
-\min\left(P_{\text{total}}\right)=\min\left[\left(1+\dfrac{1}{COP}\right)P_{\text{IT}}\right]
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsection
-Utilization
-\end_layout
-
-\begin_layout Standard
-Utilization is the percentage utilization of the CPU computational capacity.
- For the 
-\begin_inset Formula $i^{\text{th}}$
-\end_inset
-
- server utilization is defined as 
-\begin_inset Formula $u_{i}$
-\end_inset
-
- and 
-\begin_inset Formula $0<u_{i}<1.0$
-\end_inset
-
-.
- Total utilization is defined as:
-\begin_inset Formula 
-\[
-U_{\text{total}}=\sum_{i=1}^{N}u_{i}
-\]
-
-\end_inset
-
-Utilization is adjusted by a scheduler, depending on the workload and the
- performance of the cooling system.
 \end_layout
 
 \begin_layout Section
