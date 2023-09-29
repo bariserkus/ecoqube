@@ -321,6 +321,80 @@ name "fig:recommended"
  a rule and it follows a different rule if it is larger than 50%.
 \end_layout
 
+\begin_layout Subsection
+Modelling of the Server Power Consumption
+\end_layout
+
+\begin_layout Standard
+The power consumption of each server is measured and modelled by [REF].
+ The power consumption is given by the following equations:
+\begin_inset Formula 
+\begin{eqnarray*}
+P_{\text{s}}^{i} & = & 69+328.338u_{i}+60.1008,\qquad u_{i}\leq0.5\\
+P_{\text{s}}^{i} & = & 69+328.338u_{i}+60.1008,\qquad u_{i}>0.5
+\end{eqnarray*}
+
+\end_inset
+
+where 
+\begin_inset Formula $u_{i}$
+\end_inset
+
+ is utilization of server 
+\begin_inset Formula $i$
+\end_inset
+
+ and 
+\begin_inset Formula $0<u_{i}<1.0$
+\end_inset
+
+.
+ Power consumption function is shown in Figure .
+ 
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename figures/fig04.pdf
+	lyxscale 50
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Power consumption function of servers
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Modelling of the Return and Supply Temperatures
+\end_layout
+
+\begin_layout Standard
+A model to estimate the relation between supply and return temperatures
+ for a given workload is developed by [REF].
+ [UNDER PROGRESS]
+\end_layout
+
 \begin_layout Section
 Performance Evaluation
 \end_layout
@@ -332,6 +406,13 @@ Performance of the EMPA DC is evaluated on several basis.
 
 \begin_layout Subsection
 CPU Temperature
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:CPU-Temperature"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -1394,6 +1475,33 @@ In the current scenario of the RL-based control, workload distribution is
  not considered to be an action.
  It will be included as an action parameter in the following stages of the
  study.
+\end_layout
+
+\begin_layout Subsection
+Training of the Algorithm
+\end_layout
+
+\begin_layout Standard
+For training purposes, a simulation model of the environment will be developed.
+ In this model, server CPU temperatures will be approximated by the model
+ developed by [REF] and summarized in Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:CPU-Temperature"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+ Furthermore, the model developed by [REF] will be used to estimate the
+ supply and return temperatures.
+ In the simulation model, randomly generated workloads, 
+\begin_inset Formula $u_{i}$
+\end_inset
+
+ will be used.
 \end_layout
 
 \begin_layout Standard
