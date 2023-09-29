@@ -26,7 +26,12 @@ for j in range(lt2):
     elif t2[j] > 0.5:
         s2[j] = 69 + 202.707*t2[j] + 33.91
 
+plt.rc('font', **{'family': 'serif', 'serif': ['Computer Modern']})
+plt.rc('text', usetex=True)
+
 fig, ax = plt.subplots(1)
+fig.set_figheight(3)
+fig.set_figwidth(5)
 plt.xlim([0, 1])
 plt.ylim([0, 300])
 ax.grid()
