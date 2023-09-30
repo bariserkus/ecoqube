@@ -308,6 +308,13 @@ name "fig:recommended"
 \end_layout
 
 \begin_layout Standard
+\begin_inset Formula $P_{\text{c}}$
+\end_inset
+
+: Power consumption of the cooling system.
+\end_layout
+
+\begin_layout Standard
 \begin_inset Formula $u_{i}$
 \end_inset
 
@@ -321,6 +328,173 @@ name "fig:recommended"
  a rule and it follows a different rule if it is larger than 50%.
 \end_layout
 
+\begin_layout Subsection
+Modelling of the Server Power Consumption
+\end_layout
+
+\begin_layout Standard
+Utilization is the percentage utilization of the CPU computational capacity.
+ For the 
+\begin_inset Formula $i^{\text{th}}$
+\end_inset
+
+ server utilization is defined as 
+\begin_inset Formula $u_{i}$
+\end_inset
+
+ and 
+\begin_inset Formula $0<u_{i}<1.0$
+\end_inset
+
+.
+ Total utilization is defined as:
+\begin_inset Formula 
+\[
+U_{\text{total}}=\sum_{i=1}^{N}u_{i}
+\]
+
+\end_inset
+
+Utilization is adjusted by a scheduler, depending on the workload and the
+ performance of the cooling system.
+\end_layout
+
+\begin_layout Standard
+The power consumption of each server is measured and modelled by [REF].
+ The power consumption is given by the following equations:
+\begin_inset Formula 
+\begin{eqnarray*}
+P_{\text{s}}^{i} & = & 69+328.338u_{i}+60.1008,\qquad u_{i}\leq0.5\\
+P_{\text{s}}^{i} & = & 69+328.338u_{i}+60.1008,\qquad u_{i}>0.5
+\end{eqnarray*}
+
+\end_inset
+
+where 
+\begin_inset Formula $u_{i}$
+\end_inset
+
+ is utilization of server 
+\begin_inset Formula $i$
+\end_inset
+
+.
+ Power consumption function is shown in Figure .
+ 
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename figures/fig04.pdf
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Power consumption function of servers
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Modelling of the Return and Supply Temperatures
+\end_layout
+
+\begin_layout Standard
+A model to estimate the relation between supply and return temperatures
+ for a given workload is developed by [REF].
+ [UNDER PROGRESS]
+\end_layout
+
+\begin_layout Subsection
+Modelling of Power Consumptions
+\end_layout
+
+\begin_layout Standard
+An index for evaluating the power usage performance of a DC is Coefficient
+ of Performance (COP), which is defined as:
+\begin_inset Formula 
+\[
+COP=\dfrac{P_{\text{IT}}}{P_{\text{c}}}
+\]
+
+\end_inset
+
+where, 
+\begin_inset Formula $P_{\text{IT}}$
+\end_inset
+
+ is the power consumed by the IT equipment (e.g.
+ servers), and 
+\begin_inset Formula $P_{\text{c}}$
+\end_inset
+
+ is the power consumed by the cooling system.
+ 
+\begin_inset Formula $P_{\text{IT}}$
+\end_inset
+
+ can be represented as:
+\begin_inset Formula 
+\[
+P_{\text{IT}}=\sum_{i=1}^{N}P_{\text{s}}^{i}
+\]
+
+\end_inset
+
+COP is a characteristics of the cooling system and the DC and is fixed for
+ given temperatures.
+ The total power usage of the DC is given by:
+\begin_inset Formula 
+\[
+P_{\text{total}}=P_{\text{IT}}+P_{\text{c}}
+\]
+
+\end_inset
+
+It is convenient to represent the total power consumption in terms of only
+ 
+\begin_inset Formula $P_{\text{IT}}$
+\end_inset
+
+ as follows:
+\begin_inset Formula 
+\[
+P_{\text{total}}=\left(1+\dfrac{1}{COP}\right)P_{\text{IT}}
+\]
+
+\end_inset
+
+Therefore, the problem of minimization of total power consumption can be
+ represented as:
+\begin_inset Formula 
+\[
+\min\left(P_{\text{total}}\right)=\min\left[\left(1+\dfrac{1}{COP}\right)P_{\text{IT}}\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 Performance Evaluation
 \end_layout
@@ -332,6 +506,13 @@ Performance of the EMPA DC is evaluated on several basis.
 
 \begin_layout Subsection
 CPU Temperature
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:CPU-Temperature"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -737,7 +918,7 @@ noprefix "false"
 placement h
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
@@ -983,7 +1164,7 @@ noprefix "false"
 placement h
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
@@ -1099,96 +1280,6 @@ By-Pass
  
 \end_layout
 
-\begin_layout Subsection
-Power Usage
-\end_layout
-
-\begin_layout Standard
-An index for evaluating the power usage performance of a DC is Coefficient
- of Performance (COP), which is defined as:
-\begin_inset Formula 
-\[
-COP=\dfrac{P_{\text{IT}}}{P_{\text{cooling}}}
-\]
-
-\end_inset
-
-where, 
-\begin_inset Formula $P_{\text{IT}}$
-\end_inset
-
- is the power consumed by the IT equipment (e.g.
- servers), and 
-\begin_inset Formula $P_{\text{cooling}}$
-\end_inset
-
- is the power consumed by the cooling system.
- COP is a characteristics of the cooling system and the DC and is fixed
- for given temperatures.
- The total power usage of the DC is given by:
-\begin_inset Formula 
-\[
-P_{\text{total}}=P_{\text{IT}}+P_{\text{cooling}}
-\]
-
-\end_inset
-
-It is convenient to represent the total power consumption in terms of only
- 
-\begin_inset Formula $P_{\text{IT}}$
-\end_inset
-
- as follows:
-\begin_inset Formula 
-\[
-P_{\text{total}}=\left(1+\dfrac{1}{COP}\right)P_{\text{IT}}
-\]
-
-\end_inset
-
-Therefore, the problem of minimization of total power consumption can be
- represented as:
-\begin_inset Formula 
-\[
-\min\left(P_{\text{total}}\right)=\min\left[\left(1+\dfrac{1}{COP}\right)P_{\text{IT}}\right]
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsection
-Utilization
-\end_layout
-
-\begin_layout Standard
-Utilization is the percentage utilization of the CPU computational capacity.
- For the 
-\begin_inset Formula $i^{\text{th}}$
-\end_inset
-
- server utilization is defined as 
-\begin_inset Formula $u_{i}$
-\end_inset
-
- and 
-\begin_inset Formula $0<u_{i}<1.0$
-\end_inset
-
-.
- Total utilization is defined as:
-\begin_inset Formula 
-\[
-U_{\text{total}}=\sum_{i=1}^{N}u_{i}
-\]
-
-\end_inset
-
-Utilization is adjusted by a scheduler, depending on the workload and the
- performance of the cooling system.
-\end_layout
-
 \begin_layout Section
 Reinforcement Learning for Control of Cooling System
 \end_layout
@@ -1237,7 +1328,7 @@ noprefix "false"
 placement h
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
@@ -1394,6 +1485,33 @@ In the current scenario of the RL-based control, workload distribution is
  not considered to be an action.
  It will be included as an action parameter in the following stages of the
  study.
+\end_layout
+
+\begin_layout Subsection
+Training of the Algorithm
+\end_layout
+
+\begin_layout Standard
+For training purposes, a simulation model of the environment will be developed.
+ In this model, server CPU temperatures will be approximated by the model
+ developed by [REF] and summarized in Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:CPU-Temperature"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+ Furthermore, the model developed by [REF] will be used to estimate the
+ supply and return temperatures.
+ In the simulation model, randomly generated workloads, 
+\begin_inset Formula $u_{i}$
+\end_inset
+
+ will be used.
 \end_layout
 
 \begin_layout Standard
