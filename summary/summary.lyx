@@ -390,7 +390,6 @@ status open
 \align center
 \begin_inset Graphics
 	filename figures/fig04.pdf
-	lyxscale 50
 
 \end_inset
 
