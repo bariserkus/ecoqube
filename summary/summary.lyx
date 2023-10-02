@@ -97,7 +97,8 @@ Layout of the DC
 \end_layout
 
 \begin_layout Standard
-The schematic layout of the EMPA DC is shown in Figure 
+The schematic layout of the EMPA DC and its front view are shown in Figure
+ 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:layout"
@@ -108,11 +109,12 @@ noprefix "false"
 \end_inset
 
 .
- The fans directly provide cool air to the servers numbered as 
+ The fans directly provide cool air to the both server groups numbered as
+ 
 \begin_inset Formula $0$
 \end_inset
 
-.
+ and 1.
  
 \end_layout
 
@@ -142,11 +144,40 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
+	filename figures/fig05.pdf
+
+\end_inset
+
+
+\begin_inset space \hspace{}
+\length 1.5cm
+\end_inset
+
+
+\begin_inset Graphics
 	filename figures/fig02.pdf
 
 \end_inset
 
 
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+(a) Layout (plan) 
+\begin_inset space \hspace{}
+\length 4cm
+\end_inset
+
+(b) Front view
+\begin_inset VSpace -0.25cm
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
@@ -156,19 +187,23 @@ name "fig:layout"
 
 \end_inset
 
-Schematic layout of the EMPA DC
+Schematic layout and front view of the EMPA DC
 \end_layout
 
 \end_inset
 
 
-\begin_inset VSpace bigskip
+\begin_inset VSpace 0.75cm
 \end_inset
 
 
 \begin_inset Graphics
 	filename figures/fig01.pdf
 
+\end_inset
+
+
+\begin_inset VSpace -0.25cm
 \end_inset
 
 
@@ -187,13 +222,17 @@ Measurements and control switches of the EMPA DC
 \end_inset
 
 
-\begin_inset VSpace bigskip
+\begin_inset VSpace 0.75cm
 \end_inset
 
 
 \begin_inset Graphics
 	filename figures/fig03.pdf
 
+\end_inset
+
+
+\begin_inset VSpace -0.25cm
 \end_inset
 
 
@@ -223,11 +262,13 @@ name "fig:recommended"
 \begin_inset Formula $T_{\text{sup}}$
 \end_inset
 
- : Temperature of the air supplied by the cooler to the server rack or simple
- rack intake temperature.
- In the EMPA DC, supply air is directly fed into the servers and the temperature
- can be adjusted.
- In a typical DC scenario, where cool air is supplied to a cold aisle and
+ : Temperature of the air supplied by the cooler to the server racks or
+ simple rack intake temperature.
+ In the EMPA DC, the supply temperature can be adjusted.
+ 
+\strikeout on
+\color darkgray
+In a typical DC scenario, where cool air is supplied to a cold aisle and
  collected from a hot aisle, 
 \begin_inset Formula $T_{\text{sup}}$
 \end_inset
@@ -252,7 +293,10 @@ name "fig:recommended"
 
  : Temperature of the air measured at the location of air returning to the
  cooler.
- In EMPA DC, 
+ 
+\strikeout on
+\color darkgray
+In EMPA DC, 
 \begin_inset Formula $T_{\text{ret}}^{i}$
 \end_inset
 
@@ -308,10 +352,18 @@ name "fig:recommended"
 \end_layout
 
 \begin_layout Standard
+\begin_inset Formula $P_{\text{IT}}$
+\end_inset
+
+ : Total power consumption of the overall IT system.
+\end_layout
+
+\begin_layout Standard
 \begin_inset Formula $P_{\text{c}}$
 \end_inset
 
 : Power consumption of the cooling system.
+ This is represented in terms of power consumption of the servers.
 \end_layout
 
 \begin_layout Standard
@@ -349,9 +401,9 @@ Utilization is the percentage utilization of the CPU computational capacity.
 .
  Total utilization is defined as:
 \begin_inset Formula 
-\[
+\begin{equation}
 U_{\text{total}}=\sum_{i=1}^{N}u_{i}
-\]
+\end{equation}
 
 \end_inset
 
@@ -360,13 +412,25 @@ Utilization is adjusted by a scheduler, depending on the workload and the
 \end_layout
 
 \begin_layout Standard
+\begin_inset Formula $P_{\text{IT}}$
+\end_inset
+
+ is the power consumed by the IT equipment (e.g.
+ servers) and defined as
+\begin_inset Formula 
+\begin{equation}
+P_{\text{IT}}=\sum_{i=1}^{N}P_{\text{s}}^{i}
+\end{equation}
+
+\end_inset
+
 The power consumption of each server is measured and modelled by [REF].
  The power consumption is given by the following equations:
 \begin_inset Formula 
-\begin{eqnarray*}
+\begin{eqnarray}
 P_{\text{s}}^{i} & = & 69+328.338u_{i}+60.1008,\qquad u_{i}\leq0.5\\
-P_{\text{s}}^{i} & = & 69+328.338u_{i}+60.1008,\qquad u_{i}>0.5
-\end{eqnarray*}
+P_{\text{s}}^{i} & = & 69+328.338u_{i}+60.1008,\qquad u_{i}>0.5\nonumber 
+\end{eqnarray}
 
 \end_inset
 
@@ -379,7 +443,17 @@ where
 \end_inset
 
 .
- Power consumption function is shown in Figure .
+ Power consumption function is shown in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:pow_cons"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
  
 \begin_inset Float figure
 wide false
@@ -397,6 +471,12 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:pow_cons"
+
+\end_inset
+
 Power consumption function of servers
 \end_layout
 
@@ -421,7 +501,9 @@ Modelling of the Return and Supply Temperatures
 \begin_layout Standard
 A model to estimate the relation between supply and return temperatures
  for a given workload is developed by [REF].
- [UNDER PROGRESS]
+ 
+\color red
+[UNDER PROGRESS]
 \end_layout
 
 \begin_layout Subsection
@@ -432,9 +514,9 @@ Modelling of Power Consumptions
 An index for evaluating the power usage performance of a DC is Coefficient
  of Performance (COP), which is defined as:
 \begin_inset Formula 
-\[
+\begin{equation}
 COP=\dfrac{P_{\text{IT}}}{P_{\text{c}}}
-\]
+\end{equation}
 
 \end_inset
 
@@ -454,19 +536,27 @@ where,
 
  can be represented as:
 \begin_inset Formula 
-\[
+\begin{equation}
 P_{\text{IT}}=\sum_{i=1}^{N}P_{\text{s}}^{i}
-\]
+\end{equation}
 
 \end_inset
 
 COP is a characteristics of the cooling system and the DC and is fixed for
  given temperatures.
- The total power usage of the DC is given by:
+ For EMPA DC, COP function is given by [REF] and summarized as below: 
+\color red
+[UNDER PROGRESS]
+\color inherit
+.
+\end_layout
+
+\begin_layout Standard
+The total power usage of the DC is given by:
 \begin_inset Formula 
-\[
+\begin{equation}
 P_{\text{total}}=P_{\text{IT}}+P_{\text{c}}
-\]
+\end{equation}
 
 \end_inset
 
@@ -477,18 +567,18 @@ It is convenient to represent the total power consumption in terms of only
 
  as follows:
 \begin_inset Formula 
-\[
+\begin{equation}
 P_{\text{total}}=\left(1+\dfrac{1}{COP}\right)P_{\text{IT}}
-\]
+\end{equation}
 
 \end_inset
 
 Therefore, the problem of minimization of total power consumption can be
  represented as:
 \begin_inset Formula 
-\[
+\begin{equation}
 \min\left(P_{\text{total}}\right)=\min\left[\left(1+\dfrac{1}{COP}\right)P_{\text{IT}}\right]
-\]
+\end{equation}
 
 \end_inset
 
@@ -580,11 +670,18 @@ noprefix "false"
 
 .
  
+\end_layout
+
+\begin_layout Standard
+Two indices are frequently used to evaluate the performance of the cooling
+ system: Rack Cooling Index (RCI) and Return Temperature Index (RTI).
+ These are discussed next.
+ 
 \begin_inset Float table
 placement h
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -788,12 +885,6 @@ Minimum Allowable Temperature
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
-Two indices are frequently used to evaluate the performance of the cooling
- system: Rack Cooling Index (RCI) and Return Temperature Index (RTI).
- These are discussed next.
 \end_layout
 
 \begin_layout Subsubsection*
@@ -1469,9 +1560,9 @@ Actions
 
  Reward/Penalty function is proposed to be:
 \begin_inset Formula 
-\[
+\begin{equation}
 R=\alpha(EER)+\beta(PM)-\left(\gamma(OP)+P\right)
-\]
+\end{equation}
 
 \end_inset
 
