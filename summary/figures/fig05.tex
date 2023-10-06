@@ -24,8 +24,8 @@
 
 \node (cooler) at (0.75, 2.5) [align=center, rotate=90] {Cooler};
 
-\draw[blue, ->] plot [smooth, tension=1.25] coordinates {(0.75, 1.5) (1.5, 0.75) (2.0, 1.0)};
-\draw[blue, ->] plot [smooth, tension=1.25] coordinates {(0.75, 1.5) (2.0,0.4) (3.5, 1.0)};
+\draw[thick, blue, ->] plot [smooth, tension=1.25] coordinates {(0.75, 1.5) (1.5, 0.75) (2.0, 1.0)};
+\draw[thick, blue, ->] plot [smooth, tension=1.25] coordinates {(0.75, 1.5) (2.0,0.4) (3.5, 1.0)};
 \node (tsup) at (2.25, 0.20) [blue, align=center, inner sep=0] {Cool Air};
 \node (t_sup) at (0.75, 1.5) [align=center, above, inner sep=1pt] {$T_\text{sup}$};
 \node (t_in1) at (2, 1.0) [align=center, above, inner sep=1pt] {$T_\text{in}$};
@@ -33,8 +33,8 @@
 
 
 \begin{scope}[yshift=5cm, yscale=-1]
-\draw[red, <-] plot [smooth, tension=1.25] coordinates {(0.75, 1.5) (1.5, 0.75) (2.0, 1.0)};
-\draw[red, -] plot [smooth, tension=1.25] coordinates {(0.75, 1.5) (2.0,0.4) (3.5, 1.0)};
+\draw[thick, red, <-] plot [smooth, tension=1.25] coordinates {(0.75, 1.5) (1.5, 0.75) (2.0, 1.0)};
+\draw[thick, red, -] plot [smooth, tension=1.25] coordinates {(0.75, 1.5) (2.0,0.4) (3.5, 1.0)};
 \node (tsup) at (2.25, 0.20) [red, align=center, inner sep=0] {Hot Air};
 \node (t_sup) at (0.75, 1.5) [align=center, below, inner sep=1pt] {$T_\text{ret}$};
 \node (t_in1) at (2, 1.0) [align=center, below, inner sep=1pt] {$T_\text{out}$};
