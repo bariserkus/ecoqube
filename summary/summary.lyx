@@ -46,8 +46,9 @@
 \cite_engine biblatex
 \cite_engine_type authoryear
 \biblio_style plain
+\biblio_options uniquelist=false, maxbibnames=9
 \biblatex_bibstyle authoryear
-\biblatex_citestyle authoryear
+\biblatex_citestyle authoryear-comp
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
@@ -381,7 +382,7 @@ In EMPA DC,
 \end_layout
 
 \begin_layout Subsection
-Modelling of the Server Power Consumption
+Modeling of the Server Power Consumption
 \end_layout
 
 \begin_layout Standard
@@ -424,7 +425,15 @@ P_{\text{IT}}=\sum_{i=1}^{N}P_{\text{s}}^{i}
 
 \end_inset
 
-The power consumption of each server is measured and modelled by [REF].
+The power consumption of each server can be represented by 
+\begin_inset Formula 
+\[
+P_{\text{s}}^{i}=G_{i}(u_{i})
+\]
+
+\end_inset
+
+In EMPA DC, power consumption is measured and modeled by [REF].
  The power consumption is given by the following equations:
 \begin_inset Formula 
 \begin{eqnarray}
@@ -495,19 +504,80 @@ Power consumption function of servers
 \end_layout
 
 \begin_layout Subsection
-Modelling of the Return and Supply Temperatures
+Modeling of the Return and Supply Temperatures
 \end_layout
 
 \begin_layout Standard
 A model to estimate the relation between supply and return temperatures
- for a given workload is developed by [REF].
- 
-\color red
-[UNDER PROGRESS]
+ for a given workload is developed by 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Tangetal2006a,Tangetal2006b"
+literal "false"
+
+\end_inset
+
+.
+ Amount of heat entering to and exiting from the 
+\begin_inset Formula $i^{\text{th}}$
+\end_inset
+
+ server are given as 
+\begin_inset Formula 
+\[
+Q_{\text{in}}^{i}=\rho f_{i}C_{\text{p}}T_{\text{in}}^{i}\qquad Q_{\text{out}}^{i}=\rho f_{i}C_{\text{p}}T_{\text{out}}^{i}
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $\rho$
+\end_inset
+
+ is the air density, 
+\begin_inset Formula $f_{i}$
+\end_inset
+
+ is the flow rate of the intake of cool air of the 
+\begin_inset Formula $i^{\text{th}}$
+\end_inset
+
+ server, and 
+\begin_inset Formula $C_{\text{p}}$
+\end_inset
+
+ is the specific heat of air.
+ The relation between the exiting and entering heat and the power consumption
+ of the 
+\begin_inset Formula $i^{\text{th}}$
+\end_inset
+
+ server is given by
+\begin_inset Formula 
+\[
+Q_{\text{out}}^{i}=Q_{\text{in}}^{i}+P_{\text{s}}^{i}
+\]
+
+\end_inset
+
+to The power consumption of server 
+\begin_inset Formula $i$
+\end_inset
+
+ can be represented in terms of inlet and outlet temperatures of the server
+ as follows:
+\begin_inset Formula 
+\[
+P_{\text{s}}^{i}=\rho f_{i}C_{\text{p}}\left(T_{\text{out}}^{i}-T_{\text{in}}^{i}\right)
+\]
+
+\end_inset
+
+ Percentage of air recirculated from
 \end_layout
 
 \begin_layout Subsection
-Modelling of Power Consumptions
+Modeling of Power Consumption
 \end_layout
 
 \begin_layout Standard
