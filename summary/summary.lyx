@@ -524,9 +524,9 @@ literal "false"
 
  server are given as 
 \begin_inset Formula 
-\[
+\begin{equation}
 Q_{\text{in}}^{i}=\rho f_{i}C_{\text{p}}T_{\text{in}}^{i}\qquad Q_{\text{out}}^{i}=\rho f_{i}C_{\text{p}}T_{\text{out}}^{i}
-\]
+\end{equation}
 
 \end_inset
 
@@ -554,26 +554,238 @@ where
 
  server is given by
 \begin_inset Formula 
-\[
-Q_{\text{out}}^{i}=Q_{\text{in}}^{i}+P_{\text{s}}^{i}
-\]
+\begin{equation}
+Q_{\text{out}}^{i}=Q_{\text{in}}^{i}+P_{\text{s}}^{i}\label{eq:qout}
+\end{equation}
 
 \end_inset
 
-to The power consumption of server 
+Or in other terms, the power consumption of the 
+\begin_inset Formula $i^{\text{th}}$
+\end_inset
+
+ server can be represented in terms of inlet and outlet temperatures of
+ the server as follows:
+\begin_inset Formula 
+\begin{equation}
+P_{\text{s}}^{i}=\rho f_{i}C_{\text{p}}\left(T_{\text{out}}^{i}-T_{\text{in}}^{i}\right)
+\end{equation}
+
+\end_inset
+
+To accurately model the input heat, recirculated air fed into servers is
+ also modeled.
+ Amount of recirculated heat from node 
 \begin_inset Formula $i$
 \end_inset
 
- can be represented in terms of inlet and outlet temperatures of the server
+ to 
+\begin_inset Formula $j$
+\end_inset
+
+ is given by
+\begin_inset Formula 
+\begin{equation}
+\alpha_{ij}Q_{\text{out}}^{i}
+\end{equation}
+
+\end_inset
+
+where 
+\begin_inset Formula $\alpha_{ij}$
+\end_inset
+
+ is the percentage of heat flow from node 
+\begin_inset Formula $i$
+\end_inset
+
+ to 
+\begin_inset Formula $j$
+\end_inset
+
+.
+ 
+\begin_inset Formula $\alpha_{ij}$
+\end_inset
+
+ can be represented by an 
+\begin_inset Formula $n\times n$
+\end_inset
+
+ matrix as follows:
+\begin_inset Formula 
+\begin{equation}
+\mathbf{A}=\left[\begin{array}{cccc}
+\alpha_{11} & \alpha_{12}\\
+\alpha_{21} & \alpha_{22} & \cdots\\
+ & \vdots & \ddots\\
+ &  &  & \alpha_{nn}
+\end{array}\right]
+\end{equation}
+
+\end_inset
+
+Input heat can be modeled as (a) recirculated air and (b) supplied air:
+\begin_inset Formula 
+\begin{equation}
+Q_{\text{in}}^{i}=\sum_{j=1}^{N}\alpha_{ji}Q_{\text{out}}^{j}+Q_{\text{sup}}^{i}
+\end{equation}
+
+\end_inset
+
+ Further supply heat is modeled as:
+\begin_inset Formula 
+\begin{equation}
+Q_{\text{sup}}^{i}=\rho\left(f_{i}-\sum_{j=1}^{N}\alpha_{ji}f_{i}\right)C_{\text{p}}T_{\text{sup}}
+\end{equation}
+
+\end_inset
+
+The input heat becomes
+\begin_inset Formula 
+\begin{eqnarray}
+Q_{\text{in}}^{i} & = & \sum_{j=1}^{N}\alpha_{ji}\rho f_{j}C_{\text{p}}T_{\text{out}}^{j}+\rho\left(f_{i}-\sum_{j=1}^{N}\alpha_{ji}\rho f_{j}\right)C_{\text{p}}T_{\text{sup}}\\
+Q_{\text{in}}^{i} & = & \sum_{j=1}^{N}\alpha_{ji}K_{j}T_{\text{out}}^{j}+\left(K_{i}-\sum_{j=1}^{N}\alpha_{ji}K_{j}\right)T_{\text{sup}}
+\end{eqnarray}
+
+\end_inset
+
+where 
+\begin_inset Formula $K_{j}=\rho f_{j}C_{\text{p}}$
+\end_inset
+
+.
+ Therefore, the output temperature can be found using Equation 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:qout"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
  as follows:
 \begin_inset Formula 
+\begin{equation}
+K_{i}T_{\text{out}}^{i}=\sum_{j=1}^{N}\alpha_{ji}K_{j}T_{\text{out}}^{j}+\left(K_{i}-\sum_{j=1}^{N}\alpha_{ji}K_{j}\right)T_{\text{sup}}+P_{i}
+\end{equation}
+
+\end_inset
+
+In terms of matrices:
+\begin_inset Formula 
+\begin{equation}
+\mathbf{K}\mathbf{T}_{\text{out}}=\mathbf{A}^{\text{T}}\mathbf{K}\mathbf{T}_{\text{out}}+\mathbf{K}\mathbf{T_{\text{sup}}}-\mathbf{A}^{\text{T}}\mathbf{K}\mathbf{T}_{\text{sup}}+\mathbf{P}
+\end{equation}
+
+\end_inset
+
+where 
+\begin_inset Formula $\mathbf{K}$
+\end_inset
+
+ is an 
+\begin_inset Formula $n\times n$
+\end_inset
+
+ diagonal matrix, 
+\begin_inset Formula $\mathbf{T}_{\text{out}}$
+\end_inset
+
+ is an 
+\begin_inset Formula $n\times1$
+\end_inset
+
+ vector, 
+\begin_inset Formula $\mathbf{T}_{\text{sup}}$
+\end_inset
+
+ is an 
+\begin_inset Formula $n\times1$
+\end_inset
+
+ vector, and 
+\begin_inset Formula $\mathbf{P}$
+\end_inset
+
+ is an 
+\begin_inset Formula $n\times1$
+\end_inset
+
+ vector.
+ The equation can also be written as
+\begin_inset Formula 
+\begin{equation}
+\mathbf{K}\left(\mathbf{T}_{\text{out}}-\mathbf{T_{\text{sup}}}\right)=\mathbf{A}^{\text{T}}\mathbf{K}\left(\mathbf{T}_{\text{out}}-\mathbf{T_{\text{sup}}}\right)+\mathbf{P}\label{eq:tout}
+\end{equation}
+
+\end_inset
+
+To identify the cross-interference matrix 
+\begin_inset Formula $\mathbf{A}$
+\end_inset
+
+, simulations are performed 
+\begin_inset Formula $n$
+\end_inset
+
+-times and Equation 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:tout"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ is generated for 
+\begin_inset Formula $n$
+\end_inset
+
+-times.
+ Results are collected in one equation as follows:
+\begin_inset Formula 
 \[
-P_{\text{s}}^{i}=\rho f_{i}C_{\text{p}}\left(T_{\text{out}}^{i}-T_{\text{in}}^{i}\right)
+\mathbf{A}^{\text{T}}=\mathbf{I}-\left[\mathbf{P}_{\text{new}}-\mathbf{P}_{\text{ref}}\right]\left[\mathbf{T}_{\text{out}}^{\text{new}}-\mathbf{T}_{\text{out}}^{\text{ref}}\right]^{-1}\mathbf{K}^{-1}
 \]
 
 \end_inset
 
- Percentage of air recirculated from
+where all matrices are 
+\begin_inset Formula $n\times n$
+\end_inset
+
+.
+ After solving for 
+\begin_inset Formula $\mathbf{A}$
+\end_inset
+
+, server output temperatures can be estimated for a given workload using
+ Equation 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:tout"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+In EMPA DC, the cross-interference matrices are obtained for 
+\color red
+xx
+\color inherit
+ and 
+\color red
+yy 
+\color inherit
+profiles and are available in numerical format.
 \end_layout
 
 \begin_layout Subsection
@@ -583,6 +795,14 @@ Modeling of Power Consumption
 \begin_layout Standard
 An index for evaluating the power usage performance of a DC is Coefficient
  of Performance (COP), which is defined as:
+\begin_inset Formula 
+\begin{equation}
+COP=\dfrac{\text{Amount of Heat Removed by the Cooler}}{\text{Amount of Energy Consumed by the Cooler}}
+\end{equation}
+
+\end_inset
+
+or in power terms:
 \begin_inset Formula 
 \begin{equation}
 COP=\dfrac{P_{\text{IT}}}{P_{\text{c}}}
@@ -600,6 +820,18 @@ where,
 \end_inset
 
  is the power consumed by the cooling system.
+ 
+\begin_inset Formula $COP$
+\end_inset
+
+ is generally identified as a function of supply temperature, i.e.,
+\begin_inset Formula 
+\[
+COP=COP(T_{\text{sup}})
+\]
+
+\end_inset
+
  
 \begin_inset Formula $P_{\text{IT}}$
 \end_inset
@@ -646,9 +878,20 @@ P_{\text{total}}=\left(1+\dfrac{1}{COP}\right)P_{\text{IT}}
 Therefore, the problem of minimization of total power consumption can be
  represented as:
 \begin_inset Formula 
-\begin{equation}
+\[
 \min\left(P_{\text{total}}\right)=\min\left[\left(1+\dfrac{1}{COP}\right)P_{\text{IT}}\right]
-\end{equation}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\text{subject to}\quad P_{\text{IT}}=\sum_{i=1}^{N}P_{\text{s}}^{i},\quad P_{\text{s}}^{i}=G_{i}(u_{i})
+\]
 
 \end_inset
 
@@ -751,7 +994,7 @@ Two indices are frequently used to evaluate the performance of the cooling
 placement h
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
@@ -987,7 +1230,7 @@ According to this definition,
 \begin_inset Formula $RCI_{\text{HI}}$
 \end_inset
 
- is a measure pof the absence of over-temperatures.
+ is a measure of the absence of over-temperatures.
  100% means no over-temperature exists.
  
 \begin_inset Formula $RCI_{\text{HI}}$
